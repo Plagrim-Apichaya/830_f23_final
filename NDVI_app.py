@@ -116,13 +116,17 @@ if page == "🏠 Home":
     st.write("Ground Station: th_chachoengsao_rubber_flux_chachoengsao, Chachoengsao, Thailand")
     st.write("From the product, we compute the average of the Median NDVI dataset")
 
-
+    st.subheader("Let's explore the dataset together.")
     st.subheader("NDVI Profile")
+    st.write("Here is the NDVI profile with 16 days composition form 2000 (the day MODIS is launched to collect the data in space)")
     st.altair_chart(NDVI_profile)
 
 
     ##### ------ boxplot ----- #####
     st.subheader("NDVI in temporal context")
+    st.write("The NDVI in different time factor")
+    st.write("Let's see how is the NDVI profile looks like in week/ month/ year.")
+    st.write("(hint: you can see yearly pattern of NDVI with by month profile to observe the pattern of vegetation on this location)")
     boxplot_type = st.selectbox("Select the option here", 
                              ['dayofweek', 'quarter', 'month', 'year', 'dayofyear', 'weekofyear'])
     column_lst = ['NDVI_ratio', 'dayofweek', 'quarter', 'month', 'year', 'dayofyear','weekofyear', 'lag1', 'lag2', 'lag3', 'isFuture']
