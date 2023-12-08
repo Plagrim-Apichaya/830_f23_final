@@ -162,7 +162,7 @@ if page == "⚙️ Model":
     #########################################
     #### -------- XGB Regressor -------- ####
     #########################################
-    n = st.slider("Folds", min_value = 2, max_value = 10, value = 3, step = 1)
+    n = st.slider("Folds", min_value = 2, max_value = 7, value = 3, step = 1)
     #### Model
     #n = 4 # number of fold
     tss = TimeSeriesSplit(n_splits = n, test_size = 80, gap = 0)
@@ -284,7 +284,7 @@ if page == "🔮 Prediction":
     #### ------ prediction ------ ####
     scatter = alt.Chart(future_with_features.reset_index()).mark_point(size=50, color = "orangered").encode(
         x='index:T', 
-        y=alt.Y('pred:Q', title='Predicted NDVI'),
+        y=alt.Y('pred:Q', title='Predicted NDVI', scale=alt.Scale(domain = [0, 1])),
         tooltip=[alt.Tooltip('index:T', title='Date'), alt.Tooltip('pred:Q', title='Prediction', format='.3f')]
     )
     line = alt.Chart(future_with_features.reset_index()).mark_line(color = color[2]).encode(
